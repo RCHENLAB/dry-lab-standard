@@ -178,3 +178,6 @@ A directed acyclic graph (DAG) of jobs will be generated. For example,
 
 A report of result files will be also produced, such as [report.html](https://github.com/lijinbio/cellqc/blob/master/docs/tests/report.html).
 
+
+🔙 [Summary list of pipelines](https://github.com/RCHENLAB/dry-lab-standard/wiki)
+
