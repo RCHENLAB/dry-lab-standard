@@ -6,7 +6,7 @@
 
 Cellqc standardizes the qualiy control of single-cell RNA-Seq (scRNA) data to render clean feature count matrices from Cell Ranger outputs. Cellqc is implemented using the Snakemake workflow management system to enhance reproduciblity and scalablity of data analysis. Briefly, the QC pipeline starts from raw count feature matrices from Cell Ranger. Dropkick filters out predicted empty droplets, and SoupX purify the transcriptome measurement by substracting the background trancripts. DoubletFinder further detects the potential doublets and retain clean count feature matrices for singlets. Cell types are annotated for clean cells by a reference database using scPred.
 
-![workflow](docs/workflow.png)
+![workflow](RCHENLAB/dry-lab-standard/blob/main/workflow.png)
 
 ## Installation
 
@@ -174,7 +174,7 @@ $ snakemake -j 4 --configfile config.yaml --dag | tee dag.dot | dot -Tpdf > dag.
 
 A directed acyclic graph (DAG) of jobs will be generated. For example,
 
-![DAG](docs/tests/dag.png)
+![DAG](RCHENLAB/dry-lab-standard/blob/main/dag.png)
 
 A report of result files will be also produced, such as [report.html](https://github.com/lijinbio/cellqc/blob/master/docs/tests/report.html).
 
