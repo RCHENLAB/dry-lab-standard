@@ -3,7 +3,6 @@
 ✔️ This Pipeline is also available at [Github](https://github.com/ucagenomix/sicelore)
 
 
-<img src="sicelore.png">
 
 SiCeLoRe (Single Cell Long Read) is a suite of tools dedicated to cell barcode / UMI (unique molecular identifier) assignment and bioinformatics analysis of highly multiplexed single cell Nanopore or PacBIo long read sequencing data.
 
@@ -30,9 +29,7 @@ requires:
 
 * samtools
 
-# Workflow
 
-<img src="flow.png">
 
 # Features
 
@@ -63,6 +60,14 @@ Consensus sequences are mapped to the reference genome
 [8) Tag molecule SAM records with gene names, cell barcodes and UMI sequence](#molecule-tagging)
 
 Adds gene names, cell barcode and UMI sequence. Required for [cell x genes/isoforms/junctions] matrices generation
+
+
+
+
+
+
+
+
 
 [9) Transcript isoform expression quantification](#IsoformMatrix)
 
