@@ -6,7 +6,7 @@
 
 🖥️  Workflow steps at a glance
 
-[Workflow](https://github.com/RCHENLAB/dry-lab-standard/blob/main/monocle3_new_workflow.png)
+![workflow](https://github.com/RCHENLAB/dry-lab-standard/blob/main/workflow.png)
 
 🖥️ [Clustering and classifying your cells](https://cole-trapnell-lab.github.io/monocle3/docs/clustering/)
 
