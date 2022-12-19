@@ -143,7 +143,7 @@ $ slurmtaco.sh -m 20G -- cellqc -c config.yaml
 To verify the queue on taco server: 
 
 ```
-$ squeue -u ourusername
+$ squeue -u yourusername
 ```   
 
 
