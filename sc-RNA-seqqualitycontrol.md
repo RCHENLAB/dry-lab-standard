@@ -115,6 +115,13 @@ and
 $ cp /storage/chen/home/u247700/cellqc/test3/sample.txt .
 ```  
 
+Or just download the files to taco server:
+
+```
+$ wget https://github.com/RCHENLAB/dry-lab-standard/blob/main/config.yaml
+$ wget https://github.com/RCHENLAB/dry-lab-standard/blob/main/sample.txt
+``` 
+
 The config.yaml file needs to be as follows:
 
 ```
