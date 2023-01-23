@@ -1,0 +1,26 @@
+# samples with Cell Ranger output directories
+samples: /storage/chen/data_share_folder/22_10x_hs_AnteriorSegment_data/anterior_data_010623/LEI_22_49449_TM/sample.txt
+
+## configuration for dropkick
+dropkick:
+  skip: false
+  method: multiotsu
+  numthreads: 2
+
+## Filter cells by nCount, nFeature, and mito
+filterbycount:
+  mincount: 500
+  minfeature: 300
+  mito: 5
+
+## configuration for DoubletFinder
+doubletfinder:
+  findpK: false
+  numthreads: 5
+  pK: 0.005
+
+## configuration for scPred
+scpred:
+  skip: true
+  reference: /storage/chen/home/u247700/cellqc/scPred_reference.rds
+  threshold: 0.9

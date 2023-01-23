@@ -1,0 +1,2 @@
+sample	cellranger
+sample1	/storage/chen/data_share_folder/22_10x_hs_AnteriorSegment_data/anterior_data_010623/LEI_22_49449_TM/tmp/dataset
