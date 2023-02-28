@@ -1,6 +1,10 @@
 ## Single-Cell Analysis in Python
 
-🖥️ This pipeline is also available at https://scanpy.readthedocs.io/en/stable/tutorials.html
+
+🖥️ This tutorial is based on Scanpy https://scanpy.readthedocs.io/en/stable/tutorials.html
+
+
+For more info, please visit the followed documents:
 
  ✔️ [Pre-processing and clustering](https://scanpy-tutorials.readthedocs.io/en/latest/pbmc3k.html)
        
