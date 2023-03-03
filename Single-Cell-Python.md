@@ -12,7 +12,7 @@ For more info, please visit the followed documents:
        
  ✔️ [Trajectory inference](https://scanpy-tutorials.readthedocs.io/en/latest/paga-paul15.html)
        
- ✔️ [Integratin datasets](https://scanpy-tutorials.readthedocs.io/en/latest/integrating-data-using-ingest.html)
+ ✔️ [Integration of  datasets](https://scanpy-tutorials.readthedocs.io/en/latest/integrating-data-using-ingest.html)
        
  ✔️ [Spatial data](https://scanpy-tutorials.readthedocs.io/en/latest/spatial/basic-analysis.html)
        
