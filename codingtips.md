@@ -22,6 +22,24 @@ When it comes to defining a good wrapper and decorations for Python code, there 
 
 * Write clear and concise documentation for your functions and modules. This will help other developers understand how to use your code and contribute to it.
 
+# Generic wrapper
+
+def my_wrapper(func):
+    def wrapper(*args, **kwargs):
+        # do something before the function is called
+        result = func(*args, **kwargs)
+        # do something after the function is called
+        return result
+    return wrapper
+
+@my_wrapper
+def my_function():
+    # function code here
+
+
+#To create  a new function that calls an existing Python function
+
+
 
 There is one example:
 
