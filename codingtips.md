@@ -74,13 +74,20 @@ function process_file {
         echo "Error: File $file not found"
     fi
 }
+```
+We can use this:
 
+```
 # Use descriptive variable names for external dependencies
 source env_parallel.bash
+```
 
+Or alternativaly, this:
+```
 # Process each input file using process_file function
 # Use a for loop instead of env_parallel for simplicity
 for file in "$INDIR"/*.h5ad; do
     process_file "$file"
 done
+
 ```
