@@ -3,6 +3,22 @@
 
 🖥️ This tutorial is based on Scanpy https://scanpy.readthedocs.io/en/stable/tutorials.html
 
+1) Data acquisition
+2) Download - prefetch.sh
+3) fasterqdump - sra2fasterq.sh
+4) Cell ranger counts - runcellranger1.sh
+5) Quality control - cellqc
+6) Cell annotation - 
+7) Downstream analysis - pathways and DEGs
+8) How to generate networks with these results
+
+
+
+
+
+
+
+
 
 For more info, please visit the followed documents:
 
