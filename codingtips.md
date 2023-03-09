@@ -8,11 +8,12 @@ When it comes to defining a good wrapper and decorations for Python code, there 
 
 * Logging - Use logging to help debug your code and track down issues.
 
-* Documentation - Write clear and concise documentation for your functions and modules.
+* Documentation - Write clear and concise documentation for your functions and modules. Never forget to put the test case!
 
 
 With these principles in mind, here are some tips for creating a good wrapper and decorations for Python code: Use decorators to add functionality to existing functions without modifying their code. This can be a powerful way to add logging, error handling, or other functionality to your codebase. Create separate modules for related functionality. For example, you might have a module for data processing, another for machine learning models, and another for visualization. Use object-oriented programming principles to create reusable classes that encapsulate related functionality. Use logging to help debug your code and track down issues. Python's built-in logging module is a great tool for this. Write clear and concise documentation for your functions and modules. This will help other developers understand how to use your code and contribute to it.
 
+```
 # Generic wrapper
 
 def my_wrapper(func):
@@ -29,11 +30,12 @@ def my_function():
 
 
 #To create  a new function that calls an existing Python function
+```
 
 
+There is other example:
 
-There is one example:
-
+```
 #!/usr/bin/env bash
 
 # Script to preprocess scRNAseq data
@@ -81,3 +83,4 @@ source env_parallel.bash
 for file in "$INDIR"/*.h5ad; do
     process_file "$file"
 done
+```
