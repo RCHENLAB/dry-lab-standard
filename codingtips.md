@@ -10,17 +10,8 @@ When it comes to defining a good wrapper and decorations for Python code, there 
 
 * Documentation - Write clear and concise documentation for your functions and modules.
 
-* With these principles in mind, here are some tips for creating a good wrapper and decorations for Python code:
 
-* Use decorators to add functionality to existing functions without modifying their code. This can be a powerful way to add logging, error handling, or other functionality to your codebase.
-
-* Create separate modules for related functionality. For example, you might have a module for data processing, another for machine learning models, and another for visualization.
-
-* Use object-oriented programming principles to create reusable classes that encapsulate related functionality.
-
-* Use logging to help debug your code and track down issues. Python's built-in logging module is a great tool for this.
-
-* Write clear and concise documentation for your functions and modules. This will help other developers understand how to use your code and contribute to it.
+With these principles in mind, here are some tips for creating a good wrapper and decorations for Python code: Use decorators to add functionality to existing functions without modifying their code. This can be a powerful way to add logging, error handling, or other functionality to your codebase. Create separate modules for related functionality. For example, you might have a module for data processing, another for machine learning models, and another for visualization. Use object-oriented programming principles to create reusable classes that encapsulate related functionality. Use logging to help debug your code and track down issues. Python's built-in logging module is a great tool for this. Write clear and concise documentation for your functions and modules. This will help other developers understand how to use your code and contribute to it.
 
 # Generic wrapper
 
