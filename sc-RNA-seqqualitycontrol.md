@@ -132,6 +132,23 @@ To change the path use vim editor
 
 ```
 $ vi config.yaml
+dropkick:
+  skip: true
+  method: multiotsu
+  numthreads: 1
+filterbycount:
+  mincount: 500
+  minfeature: 300
+  mito: 10
+doubletfinder:
+  skip: false
+  findpK: false
+  numthreads: 5
+  pK: 0.01
+scpred:
+  skip: true
+  reference: /path_to_reference/scPred_trainmodel_RNA_svmRadialWeights_scpred.rds
+  threshold: 0.9
 ```  
   
 
@@ -144,7 +161,8 @@ Repeat for the sample.txt file!
 To run cellqc in the taco server, use 
 
 ```
-$ slurmtaco.sh -m 20G -- cellqc -c config.yaml
+$ slurmtaco.sh -p short -t 5 -m 20G -n mhgcp-d03 -- cellqc -c config.yaml -- sample.txt
+
 ```  
 
 To verify the queue on taco server: 
