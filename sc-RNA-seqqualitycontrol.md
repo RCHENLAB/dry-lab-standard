@@ -158,6 +158,9 @@ Press esc and  :wq to save
 
 Repeat for the sample.txt file! 
 
+
+Example of config file: <https://github.com/RCHENLAB/dry-lab-standard/blob/main/config.yaml>
+
 To run cellqc in the taco server, use 
 
 ```
