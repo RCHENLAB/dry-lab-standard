@@ -29,7 +29,7 @@ $ pip install dropkick
 To test the installation, simply run
 
 ```
-$ cellqc -h
+cellqc -h
 ```
 
 ## Example to run cellqc 
@@ -37,20 +37,20 @@ $ cellqc -h
 First, we need to create a folder call tmp with the following command
 
 ```
-$ mkdir tmp
+mkdir tmp
 ```
 
 Go to the *tmp* directory, and create other directory call datataset
 
 ```
-$ cd tmp
-$ mkdir dataset
+cd tmp
+mkdir dataset
 ```
 
 Go to dataset directory and create simbolic links to the input data with the *ln* command (for more information about this command, go to *man ln*) 
 
 ```
-$ ln -s /storage/novaseq/Data/221129_A00431_0455_BHM37NDSX3/Data/Intensities/BaseCalls/10x/3v3_22_389_retina_N_NeunT/analysis.tar.gz . 
+ln -s /storage/novaseq/Data/221129_A00431_0455_BHM37NDSX3/Data/Intensities/BaseCalls/10x/3v3_22_389_retina_N_NeunT/analysis.tar.gz . 
 ```
 
 This command will create a copy of the archives needed to run cellqc 
@@ -58,16 +58,16 @@ This command will create a copy of the archives needed to run cellqc
 For all the .tar.gz files, we need to create a separate folder to each one, as follows: 
 
 ```
-$ mkdir analysis 
-$ mkdir  filtered_feature_bc_matrix 
-$ mkdir raw_feature_bc_matrix 
+mkdir analysis 
+mkdir  filtered_feature_bc_matrix 
+mkdir raw_feature_bc_matrix 
 ```
 
 For each folder, we need to put in the specific .tar.gz files, decompress the file, and after that, delete the .tar.gz file, as follows: 
 ```
-$ cd analysis 
-$ ln -s /storage/novaseq/Data/221129_A00431_0455_BHM37NDSX3/Data/Intensities/BaseCalls/10x/3v3_22_389_retina_N_NeunT/analysis.tar.gz . 
-$ tar -xf analysis.tar.gz 
+cd analysis 
+ln -s /storage/novaseq/Data/221129_A00431_0455_BHM37NDSX3/Data/Intensities/BaseCalls/10x/3v3_22_389_retina_N_NeunT/analysis.tar.gz . 
+tar -xf analysis.tar.gz 
 ```
 
 Verify if the follow folders are available 1) clustering 2) diffexp 3) pca 3) tsne 4) umap 
@@ -76,9 +76,9 @@ After that, don’t forget to delete the analysis.tar.gz file! rm analysis.tar.g
 
 We need to repeat this process to filtered_feature_bc_matrix.tar.gz and for raw_feature_bc_matrix.tar.gz
 ```
-$ cd filtered_feature_bc_matrix.tar
-$ ln -s /storage/novaseq/Data/221129_A00431_0455_BHM37NDSX3/Data/Intensities/BaseCalls/10x/3v3_22_389_retina_N_NeunT/ filtered_feature_bc_matrix.tar.gz .
-$ tar -xf filtered_feature_bc_matrix.tar.gz 
+ cd filtered_feature_bc_matrix.tar
+ ln -s /storage/novaseq/Data/221129_A00431_0455_BHM37NDSX3/Data/Intensities/BaseCalls/10x/3v3_22_389_retina_N_NeunT/ filtered_feature_bc_matrix.tar.gz .
+ tar -xf filtered_feature_bc_matrix.tar.gz 
 ```
 
 Verify if the follow folders are available: 1) barcodes.tsv.gz 2) features.tsv.gz 3) matrix.mtx.gz 
@@ -88,50 +88,33 @@ After that, use rm analysis.tar.gz
 Go to the raw_feature_bc_matrix and repeat the process 
 
 ```
-$ ln -s /storage/novaseq/Data/221129_A00431_0455_BHM37NDSX3/Data/Intensities/BaseCalls/10x/3v3_22_389_retina_N_NeunT/analysis.tar.gz .
-$ ln -s /storage/novaseq/Data/221129_A00431_0455_BHM37NDSX3/Data/Intensities/BaseCalls/10x/3v3_22_389_retina_N_NeunT/cloupe.cloupe .
-$ ln -s /storage/novaseq/Data/221129_A00431_0455_BHM37NDSX3/Data/Intensities/BaseCalls/10x/3v3_22_389_retina_N_NeunT/filtered_feature_bc_matrix.h5 .  
-$ ln -s /storage/novaseq/Data/221129_A00431_0455_BHM37NDSX3/Data/Intensities/BaseCalls/10x/3v3_22_389_retina_N_NeunT/filtered_feature_bc_matrix.tar.gz .
-$ ln -s /storage/novaseq/Data/221129_A00431_0455_BHM37NDSX3/Data/Intensities/BaseCalls/10x/3v3_22_389_retina_N_NeunT/metrics_summary.csv . 
-$ ln -s /storage/novaseq/Data/221129_A00431_0455_BHM37NDSX3/Data/Intensities/BaseCalls/10x/3v3_22_389_retina_N_NeunT/molecule_info.h5 . 
-$ ln -s /storage/novaseq/Data/221129_A00431_0455_BHM37NDSX3/Data/Intensities/BaseCalls/10x/3v3_22_389_retina_N_NeunT/possorted_genome_bam.bam . 
-$ ln -s /storage/novaseq/Data/221129_A00431_0455_BHM37NDSX3/Data/Intensities/BaseCalls/10x/3v3_22_389_retina_N_NeunT/possorted_genome_bam.bam.bai . 
-$ ln -s /storage/novaseq/Data/221129_A00431_0455_BHM37NDSX3/Data/Intensities/BaseCalls/10x/3v3_22_389_retina_N_NeunT/raw_feature_bc_matrix.h5 .  
-$ ln -s /storage/novaseq/Data/221129_A00431_0455_BHM37NDSX3/Data/Intensities/BaseCalls/10x/3v3_22_389_retina_N_NeunT/raw_feature_bc_matrix.tar.gz . 
-$ ln -s /storage/novaseq/Data/221129_A00431_0455_BHM37NDSX3/Data/Intensities/BaseCalls/10x/3v3_22_389_retina_N_NeunT/web_summary.html .
+ ln -s /storage/novaseq/Data/221129_A00431_0455_BHM37NDSX3/Data/Intensities/BaseCalls/10x/3v3_22_389_retina_N_NeunT/analysis.tar.gz .
+ ln -s /storage/novaseq/Data/221129_A00431_0455_BHM37NDSX3/Data/Intensities/BaseCalls/10x/3v3_22_389_retina_N_NeunT/cloupe.cloupe .
+ ln -s /storage/novaseq/Data/221129_A00431_0455_BHM37NDSX3/Data/Intensities/BaseCalls/10x/3v3_22_389_retina_N_NeunT/filtered_feature_bc_matrix.h5 .  
+ln -s /storage/novaseq/Data/221129_A00431_0455_BHM37NDSX3/Data/Intensities/BaseCalls/10x/3v3_22_389_retina_N_NeunT/filtered_feature_bc_matrix.tar.gz .
+ ln -s /storage/novaseq/Data/221129_A00431_0455_BHM37NDSX3/Data/Intensities/BaseCalls/10x/3v3_22_389_retina_N_NeunT/metrics_summary.csv . 
+ ln -s /storage/novaseq/Data/221129_A00431_0455_BHM37NDSX3/Data/Intensities/BaseCalls/10x/3v3_22_389_retina_N_NeunT/molecule_info.h5 . 
+ ln -s /storage/novaseq/Data/221129_A00431_0455_BHM37NDSX3/Data/Intensities/BaseCalls/10x/3v3_22_389_retina_N_NeunT/possorted_genome_bam.bam . 
+ ln -s /storage/novaseq/Data/221129_A00431_0455_BHM37NDSX3/Data/Intensities/BaseCalls/10x/3v3_22_389_retina_N_NeunT/possorted_genome_bam.bam.bai . 
+ln -s /storage/novaseq/Data/221129_A00431_0455_BHM37NDSX3/Data/Intensities/BaseCalls/10x/3v3_22_389_retina_N_NeunT/raw_feature_bc_matrix.h5 .  
+ln -s /storage/novaseq/Data/221129_A00431_0455_BHM37NDSX3/Data/Intensities/BaseCalls/10x/3v3_22_389_retina_N_NeunT/raw_feature_bc_matrix.tar.gz . 
+ln -s /storage/novaseq/Data/221129_A00431_0455_BHM37NDSX3/Data/Intensities/BaseCalls/10x/3v3_22_389_retina_N_NeunT/web_summary.html .
 ```
 Now, we can go outside of tmp folder to run cellqc! 
 
 To run we need to files, the config.yaml and sample.txt 
 
-We can copy from 
-```
-$ cp /storage/chen/home/u247700/cellqc/test3/config.yaml .
-``` 
-
-and 
-
-```
-$ cp /storage/chen/home/u247700/cellqc/test3/sample.txt .
-```  
-
-Or just download the files to taco server:
-
-```
-$ wget https://github.com/RCHENLAB/dry-lab-standard/blob/main/config.yaml
-$ wget https://github.com/RCHENLAB/dry-lab-standard/blob/main/sample.txt
-``` 
 
 The config.yaml file needs to be as follows:
 
 ```
-$ cat config.yaml 
+cat config.yaml 
 ```  
 
 To change the path use vim editor 
 
 ```
-$ vi config.yaml
+vi config.yaml
 dropkick:
   skip: true
   method: multiotsu
@@ -164,14 +147,14 @@ Example of config file: <https://github.com/RCHENLAB/dry-lab-standard/blob/main/
 To run cellqc in the taco server, use 
 
 ```
-$ slurmtaco.sh -p short -t 5 -m 20G -n mhgcp-d03 -- cellqc -c config.yaml -- sample.txt
+slurmtaco.sh -p short -t 5 -m 20G -n mhgcp-d03 -- cellqc -c config.yaml -- sample.txt
 
 ```  
 
 To verify the queue on taco server: 
 
 ```
-$ squeue -u yourusername
+squeue -u yourusername
 ```   
 
 
