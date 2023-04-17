@@ -5,16 +5,20 @@ This code was generated using the selected tutorials:
 * Enrichment analysis using PathfindR https://egeulgen.github.io/pathfindR/
 * pathfindR Analysis for non-Homo-sapiens organisms https://cran.r-project.org/web/packages/pathfindR/vignettes/non_hs_analysis.html
 
-# Download and load the pathfindr package
-# install.packages("pathfindR")
-# To write a table with the significative p-values (File input - .csv with gene symbol, p-value and foldchange (this last one is optional)
-# To generate wrapper to these functions
+Download and load the pathfindr package
+
+```
+install.packages("pathfindR")
+```
+
+To write a table with the significative p-values (File input - .csv with gene symbol, p-value and foldchange (this last one is optional)
+To generate wrapper to these functions
 
 ```
 setwd("path/to/file")
 ```
 
-# To human data, install the library org.Hs.eg.db first!
+To human data, install the library org.Hs.eg.db first!
 
 ```
 library(pathfindR)
@@ -45,13 +49,13 @@ pathwaysresults<-run_pathfindR(cornealimbus,
                                silent_option = TRUE)
 ```
 
-# To generate the graph with the enriched pathways - use description serves to display the pathway name on the network
+To generate the graph with the enriched pathways - use description serves to display the pathway name on the network
 
 ```
 cluster_enriched_terms(pathwaysresults, use_description = TRUE)
 ```
 
-# To generate graphs for each enriched pathway:
+To generate graphs for each enriched pathway:
 
 ```
 input_results<-input_processing(
@@ -67,17 +71,17 @@ visualize_terms(pathwaysresults,
                 pin_name_path = "Biogrid")
 ```
 
-# We need to try to fix the error about kegg maps https://github.com/egeulgen/pathfindR/issues/138
+We need to try to fix the error about kegg maps https://github.com/egeulgen/pathfindR/issues/138
 
-# The table must be contain 2 or 3 columns (gene name, p value, and or fold change)
+The table must be contain 2 or 3 columns (gene name, p value, and or fold change)
 
-# To save the pathway results table
+To save the pathway results table
 
 ```
 write.csv(pathwaysresults, "filename_combinedkegg.csv")
 ```
 
-# To generate a dotplot of enrichment chart
+To generate a dotplot of enrichment chart
 
 ```
 result<- enrichment_chart(pathwaysresults, top_terms = 20) #save as pdf the plot
@@ -87,7 +91,7 @@ ggsave("result.pdf")
 ggsave("result.png")
 ```
 
-# Other functions
+Other functions
 
 ```
 term_gene_graph(pathwaysresults, num_terms = 4,use_description = TRUE)
