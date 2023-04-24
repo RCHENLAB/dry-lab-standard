@@ -38,11 +38,45 @@ env_parallel cmd ::: $(cut -f 2 < ../../fnameinfo.txt | tail -n +2)
 ```
 
 5) fasterqdump - sra2fasterq.sh
-6) Cell ranger counts - runcellranger1.sh
-7) Quality control - cellqc
-8) Cell annotation - 
-9) Downstream analysis - pathways and DEGs
-10) How to generate networks with these results
+
+```
+vi sra2fasterq.sh
+
+#!/usr/bin/env bash
+
+
+
+
+outdir=$(mrrdir.sh)
+
+
+
+
+function cmd {
+
+local id=$1
+
+slurmtaco.sh -n g01 -m 10G -- sra2fasterq.sh --include-technical -d "$outdir" -- "$id"
+
+}
+
+
+
+source env_parallel.bash
+
+env_parallel cmd ::: $(cut -f 2 < ../../fnameinfo.txt | tail -n +2)
+
+```
+
+
+7) Cell ranger counts - runcellranger1.sh
+
+
+
+9) Quality control - cellqc - [Cell qc pipeline](https://github.com/RCHENLAB/dry-lab-standard/blob/main/sc-RNA-seqqualitycontrol.md)
+10) Cell annotation - 
+11) Downstream analysis - pathways and DEGs
+12) How to generate networks with these results
 
 
 
