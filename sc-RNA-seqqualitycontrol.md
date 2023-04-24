@@ -141,6 +141,13 @@ Press esc and  :wq to save
 
 Repeat for the sample.txt file! 
 
+```
+vi sample.txt
+# collums must be tab separated!
+sample	cellranger
+3v31_22_0220_ONT	/storage/chenlab/Users/shared_data/HAS_april20_qc/3v31_22_0220_ONT/dataset
+```
+
 
 Example of config file: <https://github.com/RCHENLAB/dry-lab-standard/blob/main/config.yaml>
 
