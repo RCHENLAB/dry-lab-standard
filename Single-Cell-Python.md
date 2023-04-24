@@ -3,11 +3,16 @@
 
 🖥️ This tutorial is based on Scanpy https://scanpy.readthedocs.io/en/stable/tutorials.html
 
+
+
 1) Data acquisition
 
 We can search for public data on https://singlecell.broadinstitute.org/single_cell or https://www.ncbi.nlm.nih.gov/geo/
 
-3) Download - prefetch.sh
+
+
+
+2) Download - prefetch.sh
 
 ```
 
@@ -37,7 +42,9 @@ env_parallel cmd ::: $(cut -f 2 < ../../fnameinfo.txt | tail -n +2)
 
 ```
 
-5) fasterqdump - sra2fasterq.sh
+
+
+3) fasterqdump - sra2fasterq.sh
 
 ```
 vi sra2fasterq.sh
@@ -69,14 +76,45 @@ env_parallel cmd ::: $(cut -f 2 < ../../fnameinfo.txt | tail -n +2)
 ```
 
 
-7) Cell ranger counts - runcellranger1.sh
+4) Cell ranger counts - runcellranger1.sh
+
+```
+vi runcellranger1.sh
+
+#!/usr/bin/bash
 
 
 
-9) Quality control - cellqc - [Cell qc pipeline](https://github.com/RCHENLAB/dry-lab-standard/blob/main/sc-RNA-seqqualitycontrol.md)
-10) Cell annotation - 
-11) Downstream analysis - pathways and DEGs
-12) How to generate networks with these results
+
+#To use absolute path for fastq files, if the folder was more than 1 sample, create a list as follow:
+
+cellranger count --id=WangK_GSM4708669 \
+
+                 --transcriptome=/storage/chen/home/u234989/run_cellranger_count/refdata-gex-mm10-2020-A \
+
+                 --fastqs=/storage/chen/home/u234989/mrrdir/WangK/rawdata/sra2fasterq \
+
+                 --sample=SRR12375962,SRR12375963,SRR12375964,SRR12375965 \
+
+                 --localcores=16 \
+
+                 --localmem=64 \
+
+                 --expect-cells=10000
+               
+```
+
+
+
+5) Quality control - cellqc - [Cell qc pipeline](https://github.com/RCHENLAB/dry-lab-standard/blob/main/sc-RNA-seqqualitycontrol.md)
+
+6) Integration and cell annotation
+
+https://docs.google.com/document/d/1TVm_TV8gJLEZetxBLxLztpzzawwFksPxiHtHWm3eYRQ/edit?usp=sharing
+
+ 
+7) Downstream analysis - pathways and DEGs
+
 
 
 
