@@ -4,13 +4,45 @@
 🖥️ This tutorial is based on Scanpy https://scanpy.readthedocs.io/en/stable/tutorials.html
 
 1) Data acquisition
-2) Download - prefetch.sh
-3) fasterqdump - sra2fasterq.sh
-4) Cell ranger counts - runcellranger1.sh
-5) Quality control - cellqc
-6) Cell annotation - 
-7) Downstream analysis - pathways and DEGs
-8) How to generate networks with these results
+
+We can search for public data on https://singlecell.broadinstitute.org/single_cell or https://www.ncbi.nlm.nih.gov/geo/
+
+3) Download - prefetch.sh
+
+```
+
+prefetch SRR16959387 --max-size 420000000000
+
+```
+
+or 
+
+
+```
+
+vi prefetch.sh
+
+function cmd {
+
+local id=$1
+
+prefetch.sh "$id"
+
+}
+
+
+source env_parallel.bash
+
+env_parallel cmd ::: $(cut -f 2 < ../../fnameinfo.txt | tail -n +2)
+
+```
+
+5) fasterqdump - sra2fasterq.sh
+6) Cell ranger counts - runcellranger1.sh
+7) Quality control - cellqc
+8) Cell annotation - 
+9) Downstream analysis - pathways and DEGs
+10) How to generate networks with these results
 
 
 
