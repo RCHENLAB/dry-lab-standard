@@ -50,7 +50,7 @@ mkdir dataset
 Go to dataset directory and create simbolic links to the input data with the *ln* command (for more information about this command, go to *man ln*) 
 
 ```
-ln -s /storage/novaseq/Data/221129_A00431_0455_BHM37NDSX3/Data/Intensities/BaseCalls/10x/3v3_22_389_retina_N_NeunT/analysis.tar.gz . 
+ln -s /storage/chen/home/u247700/DRG_atlas/jageretal2022/jageretal2022/outs/analysis.tar.gz . 
 ```
 
 This command will create a copy of the archives needed to run cellqc 
@@ -66,7 +66,7 @@ mkdir raw_feature_bc_matrix
 For each folder, we need to put in the specific .tar.gz files, decompress the file, and after that, delete the .tar.gz file, as follows: 
 ```
 cd analysis 
-ln -s /storage/novaseq/Data/221129_A00431_0455_BHM37NDSX3/Data/Intensities/BaseCalls/10x/3v3_22_389_retina_N_NeunT/analysis.tar.gz . 
+ln -s /storage/chen/home/u247700/DRG_atlas/jageretal2022/jageretal2022/outs/analysis.tar.gz . 
 tar -xf analysis.tar.gz 
 ```
 
@@ -77,7 +77,7 @@ After that, don’t forget to delete the analysis.tar.gz file! rm analysis.tar.g
 We need to repeat this process to filtered_feature_bc_matrix.tar.gz and for raw_feature_bc_matrix.tar.gz
 ```
  cd filtered_feature_bc_matrix.tar
- ln -s /storage/novaseq/Data/221129_A00431_0455_BHM37NDSX3/Data/Intensities/BaseCalls/10x/3v3_22_389_retina_N_NeunT/ filtered_feature_bc_matrix.tar.gz .
+ ln -s /storage/chen/home/u247700/DRG_atlas/jageretal2022/jageretal2022/outs/filtered_feature_bc_matrix.tar.gz .
  tar -xf filtered_feature_bc_matrix.tar.gz 
 ```
 
@@ -88,17 +88,17 @@ After that, use rm analysis.tar.gz
 Go to the raw_feature_bc_matrix and repeat the process 
 
 ```
- ln -s /storage/novaseq/Data/221129_A00431_0455_BHM37NDSX3/Data/Intensities/BaseCalls/10x/3v3_22_389_retina_N_NeunT/analysis.tar.gz .
- ln -s /storage/novaseq/Data/221129_A00431_0455_BHM37NDSX3/Data/Intensities/BaseCalls/10x/3v3_22_389_retina_N_NeunT/cloupe.cloupe .
- ln -s /storage/novaseq/Data/221129_A00431_0455_BHM37NDSX3/Data/Intensities/BaseCalls/10x/3v3_22_389_retina_N_NeunT/filtered_feature_bc_matrix.h5 .  
-ln -s /storage/novaseq/Data/221129_A00431_0455_BHM37NDSX3/Data/Intensities/BaseCalls/10x/3v3_22_389_retina_N_NeunT/filtered_feature_bc_matrix.tar.gz .
- ln -s /storage/novaseq/Data/221129_A00431_0455_BHM37NDSX3/Data/Intensities/BaseCalls/10x/3v3_22_389_retina_N_NeunT/metrics_summary.csv . 
- ln -s /storage/novaseq/Data/221129_A00431_0455_BHM37NDSX3/Data/Intensities/BaseCalls/10x/3v3_22_389_retina_N_NeunT/molecule_info.h5 . 
- ln -s /storage/novaseq/Data/221129_A00431_0455_BHM37NDSX3/Data/Intensities/BaseCalls/10x/3v3_22_389_retina_N_NeunT/possorted_genome_bam.bam . 
- ln -s /storage/novaseq/Data/221129_A00431_0455_BHM37NDSX3/Data/Intensities/BaseCalls/10x/3v3_22_389_retina_N_NeunT/possorted_genome_bam.bam.bai . 
-ln -s /storage/novaseq/Data/221129_A00431_0455_BHM37NDSX3/Data/Intensities/BaseCalls/10x/3v3_22_389_retina_N_NeunT/raw_feature_bc_matrix.h5 .  
-ln -s /storage/novaseq/Data/221129_A00431_0455_BHM37NDSX3/Data/Intensities/BaseCalls/10x/3v3_22_389_retina_N_NeunT/raw_feature_bc_matrix.tar.gz . 
-ln -s /storage/novaseq/Data/221129_A00431_0455_BHM37NDSX3/Data/Intensities/BaseCalls/10x/3v3_22_389_retina_N_NeunT/web_summary.html .
+ ln -s /storage/chen/home/u247700/DRG_atlas/jageretal2022/jageretal2022/outs/analysis.tar.gz .
+ ln -s /storage/chen/home/u247700/DRG_atlas/jageretal2022/jageretal2022/outs/cloupe.cloupe .
+ ln -s /storage/chen/home/u247700/DRG_atlas/jageretal2022/jageretal2022/outs/filtered_feature_bc_matrix.h5 .  
+ln -s /storage/chen/home/u247700/DRG_atlas/jageretal2022/jageretal2022/outs/filtered_feature_bc_matrix.tar.gz .
+ ln -s /storage/chen/home/u247700/DRG_atlas/jageretal2022/jageretal2022/outs/3v3_22_389_retina_N_NeunT/metrics_summary.csv . 
+ ln -s /storage/chen/home/u247700/DRG_atlas/jageretal2022/jageretal2022/outs/molecule_info.h5 . 
+ ln -s /storage/chen/home/u247700/DRG_atlas/jageretal2022/jageretal2022/outs/possorted_genome_bam.bam . 
+ ln -s /storage/chen/home/u247700/DRG_atlas/jageretal2022/jageretal2022/outs/possorted_genome_bam.bam.bai . 
+ln -s /storage/chen/home/u247700/DRG_atlas/jageretal2022/jageretal2022/outs/raw_feature_bc_matrix.h5 .  
+ln -s /storage/chen/home/u247700/DRG_atlas/jageretal2022/jageretal2022/outs/raw_feature_bc_matrix.tar.gz . 
+ln -s /storage/chen/home/u247700/DRG_atlas/jageretal2022/jageretal2022/outs/web_summary.html .
 ```
 Now, we can go outside of tmp folder to run cellqc! 
 
