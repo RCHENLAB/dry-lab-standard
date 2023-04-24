@@ -139,6 +139,19 @@ conda search
 
 A good cheat sheet has also summarized commonly used commands. See 
 https://www.datamachinist.com/cheat-sheets/anaconda-cheat-sheet/ 
+
+
+We can export conda env from one user to another!
+Lets try:
+
+```
+#Copy cellqc env from Cristal
+conda env export > environment.yml
+
+#Download to the new user, and use this followed command:
+conda env create -f environment.yml
+
+```
  
 3. Good practices to use working with Conda
 
