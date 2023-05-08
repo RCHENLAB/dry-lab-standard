@@ -100,6 +100,14 @@ ln -s /storage/chen/home/u247700/DRG_atlas/jageretal2022/jageretal2022/outs/raw_
 ln -s /storage/chen/home/u247700/DRG_atlas/jageretal2022/jageretal2022/outs/raw_feature_bc_matrix.tar.gz . 
 ln -s /storage/chen/home/u247700/DRG_atlas/jageretal2022/jageretal2022/outs/web_summary.html .
 ```
+
+If we dont have permission to copy this files, use curl or wget to download in this link:
+
+```
+wget https://bcmedu-my.sharepoint.com/:f:/g/personal/u247700_bcm_edu/EqL241kj3pdNkEBdlTOh5iIBnbO5cV2ulYP2FqUEn23yeQ?e=e1gAEP
+```
+
+
 Now, we can go outside of tmp folder to run cellqc! 
 
 To run we need to files, the config.yaml and sample.txt 
