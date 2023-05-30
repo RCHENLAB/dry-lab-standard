@@ -17,9 +17,8 @@ We will need several tools to start the single cell analysis such as R, Seurat, 
 
 1. Access to the Taco server 
 First of all, you need to set the taco server account
-Go to the adress https://it.bcm.edu/  and create a ticket to request access to taco server
+Go to the adress https://it.bcm.edu/  and to create a ticket to request access to taco server, go to **Report a Problem** and make the request described in Short description and describe your issue 
 
-After this, send the ticket number to Bill <william.lammerding@bcm.edu>
 
 For example, 
 
