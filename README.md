@@ -79,10 +79,9 @@ Where, replace “BCM_ECA” with your ECA, and it will prompt for password.
  
 There are two directories for our use currently. 
  
- ```
- /storage/chen/home/BCM_ECA 
-/storage/singlecell/BCM_ECA
-
+```
+/storage/chen/home/BCM_ECA 
+/storage/chentemp/BCM_ECA
 ```
 
 
