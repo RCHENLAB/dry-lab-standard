@@ -80,7 +80,7 @@ Where, replace “BCM_ECA” with your ECA, and it will prompt for password.
 There are two directories for our use currently. 
  
  ```
- /storage/chen/home/BCM_ECA 
+ /storage/chen/home/BCM_ECA  #change BCM_ECA to your account
 /storage/singlecell/BCM_ECA
 
 ```
