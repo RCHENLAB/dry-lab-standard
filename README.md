@@ -13,7 +13,8 @@ To know how to start to use slurm, please visit Slurm 4 beginners.
 
 Prerequisites about basic tools and Linux operations
 
-We will need several tools to start the single cell analysis such as R, Seurat, and Python. Because Conda is a very powerful software management system, we are going to install tools via Conda. 
+We will need several tools to start the single cell analysis such as R, Seurat, and Python. B
+use Conda is a very powerful software management system, we are going to install tools via Conda. 
 
 1. Access to the Taco server 
 First of all, you need to set the taco server account
@@ -32,6 +33,12 @@ xxx will be in Dr. Chen's group.
 
 Best regards, xxx
 
+NOTE: BCM ECA is the Educational credential assessment  (ECA) number
+STARTS WITH u + 6 digit number
+
+Example:
+Paul John
+u228876
 ```
 Due to the Taco server is accessible with the BCM network only, we will need to connect BCM VPN first before logging in to the Taco server. In order to use BCM VPN, we need to set up MFA using our BCM ECA account. Official IT documents can be found at below (Need BCM account to view the page). 
 https://bcm.service-now.com/bcmsp?id=kb_article&sys_id=35d6ea9ddb83cfc0729c73d78c9619d6 
