@@ -90,6 +90,12 @@ There are two directories for our use currently.
  /storage/chen/home/BCM_ECA 
 /storage/singlecell/BCM_ECA
 
+NOTE: BCM ECA is the Educational credential assessment  (ECA) number
+STARTS WITH u + 6 digit number
+
+Example:
+Paul John
+u228876
 ```
 
 
