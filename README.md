@@ -119,7 +119,7 @@ echo “unset R_LIBS_SITE” >> ~/.bashrc
 Relogin the Taco server to recognize the above configuration. Then run below commands to download and install Conda. 
 
 ```
-mkdir ~/tools/miniconda3 && cd ~/tools/miniconda3 
+mkdir -p ~/tools/miniconda3 && cd ~/tools/miniconda3 
 wget https://repo.anaconda.com/miniconda/Miniconda3-py39_4.9.2-Linux-x86_64.sh 
 bash Miniconda3-py39_4.9.2-Linux-x86_64.sh
 ```
