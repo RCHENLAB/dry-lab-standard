@@ -154,14 +154,61 @@ bash Miniconda3-py39_4.9.2-Linux-x86_64.sh
 
 Following the prompt instructions, we can install Miniconda3 in a local directory. After installation, we need to reopen the terminal session (open a new window, or re-login to the server) so that Conda paths will be recognized. By default, the Conda environment is not activated, but we need to activate one to install new utilities. The “base” environment is the default environment of Conda. To activate it, we can simply run 
 
+## Initializing Conda
+
+To initialize conda use the following command:
+
+```
+~/miniconda3/bin/conda init
+```
+
+Now, we must update .bashrc. First, open the .bashrc file using
+
+```
+vi ~/.bashrc
+```
+
+Then, cut out the following lines:
+
+```
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/storage/chen/home/u250677/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/storage/chen/home/u250677/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/storage/chen/home/u250677/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/storage/chen/home/u250677/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+```
+
+Next, open .condainit with `vi ~/.condainit` and paste the lines above in. Save this file. **Make sure that the `>>> conda initialize >>>` lines are deleted or commented out in the .bashrc file**.
+
+## Activating Conda
+
+NOTE: **Do not activate conda at the head node!** 
+
+To use conda or any scripts, go to another node. To select the node, use *hls* command. To change the current node, use *sruntaco.sh nameofnode*, for example, to go to c00 node, use *sruntaco.sh c00*
+
+Once you move to the head node, you need to tell conda to use the ~/source/.condainit file using:
+
+```
+source ~/.condainit
+```
+
+Then, you can activate conda using
+
 ```
 conda activate
 
 ```
 
-#Note: do not run conda at head node!
 
-To use conda or any scripts, go to other node. To select the node, use *hls* command. To change the current node, use *sruntaco.sh nameofnode*, for example, to go to c00 node, use *sruntaco.sh c00*
 
 2.3 Common conda commands 
  
