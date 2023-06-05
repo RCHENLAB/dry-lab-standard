@@ -116,7 +116,33 @@ echo “unset PYTHONPATH” >> ~/.bashrc
 echo “unset R_LIBS_SITE” >> ~/.bashrc
 ```
 
-Relogin the Taco server to recognize the above configuration. Then run below commands to download and install Conda. 
+Relogin the Taco server to recognize the above configuration. 
+
+Add this configs into your ~/.bashrc 
+Edit the file with vim, as follows:
+
+```
+vi ~/.bashrc
+```
+
+After open the conf file, copy the following settings:
+
+```
+# User specific aliases and functions
+# export TMPDIR=~/../../tmp
+unset PYTHONPATH
+unset R_LIBS_SITE
+export PATH=$(sed -e "s/:\/opt[^:]\+//g" -e "s/:\/[^:]\+hisat\+//g" <<< "$PATH")
+
+ source /storage/chen/data_share_folder/jinli/script_bcm/bashrc
+ export PATH=/storage/chen/home/u247700/cellranger/cellranger-7.1.0:$PATH
+alias hls='sinfo -O nodehost,available,statecompact,cpus,cpusstate,cpusload,memory,freemem | sed "s/\s\+/\t/g" | sort -V | column -    t'
+alias sls="squeue -u $USER"
+complete -r
+
+```
+
+Then run below commands to download and install Conda. 
 
 ```
 mkdir -p ~/tools/miniconda3 && cd ~/tools/miniconda3 
