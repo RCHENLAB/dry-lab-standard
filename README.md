@@ -114,15 +114,7 @@ https://docs.conda.io/en/latest/miniconda.html
  
 E.g., we want to install the “Python 3.9” Linux installer. 
  
-Due to the system version Python library will be imported automatically, and it will clash with Conda Python, so we need to reset the Python library environment. Run below command to do this. 
-
-
-```
-echo “unset PYTHONPATH” >> ~/.bashrc 
-echo “unset R_LIBS_SITE” >> ~/.bashrc
-```
-
-Relogin the Taco server to recognize the above configuration. 
+Due to the system version Python library will be imported automatically, and it will clash with Conda Python, so we need to reset the Python library environment. 
 
 Add this configs into your ~/.bashrc 
 Edit the file with vim, as follows:
