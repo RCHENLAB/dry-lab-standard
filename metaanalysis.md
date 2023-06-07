@@ -29,14 +29,119 @@ ________________________________________________________________________________
 ______________________________________________________________________________________________________________________________________________
 
 
+**Env parallel**
+
+To make all the steps more faster, download and parallel  - https://anaconda.org/conda-forge/parallel
 
 
+**Download and prepare files**
+To download this files: prefetch.sh code
+
+```
+
+#!/usr/bin/env bash
+
+function cmd {
+local id=$1
+prefetch.sh "$id"
+}
+
+source env_parallel.bash
+# env_parallel cmd ::: $(cut -f 2 < path/to/directory | tail -n +2)
+env_parallel cmd ::: $(cut -f 2 < path/to/directory/fnameinfo.txt | tail -n +2)
+
+```
+
+Structure of fnameinfo - File with the info about the SRR, as we see in the table (but we can modified as well)
+
+```
+vi fnameinfo.txt
+
+sampleid	run
+SAMN15716454	SRR12375978
+SAMN15716458	SRR12375974
+
+```
+
+To run prefetch.sh code:
+
+```
+slurmtaco.sh -p short -t 2 -m 10G -n mhgcp-d02 -- ./prefetch.sh --max-size 420000000000
+
+# -- max size: file size - set big as possible!
+```
+
+After prefetch, prepare the .fastq files with sra2fasterq.sh - fasterqdump functions
 
 
+```
+#!/usr/bin/env bash
+
+outdir="/storage/chen/data_share_folder/22_10x_hs_AnteriorSegment_data/trigeminal_data/yangetal2022/data/"
+
+function cmd {
+local id=$1
+slurmtaco.sh -n g00 -m 10G -- sra2fasterq.sh  --split-files --include-technical  -d "$outdir" -- "$id"
+}
+
+source env_parallel.bash
+env_parallel cmd ::: $(cut -f 2 < /storage/chen/data_share_folder/22_10x_hs_AnteriorSegment_data/trigeminal_data/yangetal2022/data/fnameinfo.txt | tail -n +2)
+
+```
+
+**Before run cell ranger analysis**
+
+Make sure the .fastq files have the proper structure name, as follows:
 
 
+SRR18113700_1.fastq is Read 1
+SRR18113700_2.fastq is Read 2
+SRR18113700_3.fastq is Index 1
+SRR18113700_4.fastq is Index 2
+
+Convert to:
+SRR18113700_S1_L001_R1_001.fastq.gz (and the R2 version)
+
+SRR18113700_S1_L001_R1_001.fastq.gz
+SRR18113700_S1_L001_R2_001.fastq.gz
+
+**Cell ranger count**
+
+Using runcellranger.sh - make sure we are using the correct reference genome!
+
+Example:
+
+```
+#!/usr/bin/bash
+
+#To use absolute path for fastq files, if the folder was more than 1 sample, create a list as follow:
+JOBID="zhangetal2022"
+SAMPLE_IDS="SRR21958167,SRR21958168,SRR21958169,SRR21958170,SRR21958171,SRR21958172,SRR21958173,SRR21958174"
+TRANSCRIPTOME="/storage/chen/home/u247700/cellranger/refdata-gex-mm10-2020-A"
+FASTQS="/storage/chen/home/u247700/DRG_atlas/zhangetal2022"
+
+cellranger count --id=$JOBID \
+                 --transcriptome=$TRANSCRIPTOME \
+                 --fastqs=$FASTQS \
+                 --sample=$SAMPLE_IDS \
+                 --localcores=16 \
+                 --localmem=64 \
+                 --expect-cells=10000
 
 
+echo "All processes for all samples were done !!"
 
+```
+
+
+```
+slurmtaco.sh -p short -t 5 -m 20G -n mhgcp-d01 -- ./runcellranger.sh
+```
+
+
+✔️ Thats all! After this step, make the Quality Control pipeline! 
+
+
+[sc-RNA-seq quality control](https://github.com/RCHENLAB/dry-lab-standard/blob/main/sc-RNA-seqqualitycontrol.md)
 
 
