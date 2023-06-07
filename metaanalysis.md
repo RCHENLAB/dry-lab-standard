@@ -2,6 +2,7 @@
 
 ## Workflow to analyze sc-RNA-seq data from public databases, like:
 
+* Folder with the codes /storage/chen/home/u247700/summertutorialmeta/meta
 * Geo <https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE171337>
 
 **Overall design**
