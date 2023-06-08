@@ -34,6 +34,11 @@ ________________________________________________________________________________
 
 To make all the steps more faster, download and parallel  - https://anaconda.org/conda-forge/parallel
 
+**Install sra toolkit**
+
+```
+conda install -c bioconda sra-tools
+```
 
 **Download and prepare files**
 To download this files: prefetch.sh code
