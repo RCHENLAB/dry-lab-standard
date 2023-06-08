@@ -64,8 +64,8 @@ Structure of fnameinfo - File with the info about the SRR, as we see in the tabl
 vi fnameinfo.txt
 
 sampleid	run
-SAMN15716454	SRR12375978
-SAMN15716458	SRR12375974
+SAMN32768061	SRR23098566
+SAMN32768063	SRR23098567
 
 ```
 
