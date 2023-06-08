@@ -108,16 +108,16 @@ slurmtaco.sh -p short -t 2 -m 10G -n mhgcp-d02 -- ./sra2fasterq.sh
 Make sure the .fastq files have the proper structure name, as follows:
 
 
-SRR18113700_1.fastq is Read 1
-SRR18113700_2.fastq is Read 2
-SRR18113700_3.fastq is Index 1
-SRR18113700_4.fastq is Index 2
+SRR23098566_1.fastq is Read 1
+SRR23098566_2.fastq is Read 2
+SRR23098566_3.fastq is Index 1
+SRR23098566_4.fastq is Index 2
 
 Convert to:
-SRR18113700_S1_L001_R1_001.fastq.gz (and the R2 version)
+SRR23098566_S1_L001_R1_001.fastq.gz (and the R2 version)
 
-SRR18113700_S1_L001_R1_001.fastq.gz
-SRR18113700_S1_L001_R2_001.fastq.gz
+SRR23098566_S1_L001_R1_001.fastq.gz
+SRR23098566_S1_L001_R2_001.fastq.gz
 
 **Cell ranger count**
 
@@ -132,7 +132,7 @@ Example:
 
 #To use absolute path for fastq files, if the folder was more than 1 sample, create a list as follow:
 JOBID="zhangetal2022"
-SAMPLE_IDS="SRR21958167,SRR21958168,SRR21958169,SRR21958170,SRR21958171,SRR21958172,SRR21958173,SRR21958174"
+SAMPLE_IDS="SRR23098566,SRR23098567"
 TRANSCRIPTOME="/storage/chen/home/u247700/cellranger/refdata-gex-mm10-2020-A"
 FASTQS="/storage/chen/home/u247700/DRG_atlas/zhangetal2022"
 
@@ -148,6 +148,8 @@ cellranger count --id=$JOBID \
 echo "All processes for all samples were done !!"
 
 ```
+
+Make sure your fastq path and transcriptome file path are correct!
 
 
 ```
