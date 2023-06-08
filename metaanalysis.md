@@ -37,7 +37,7 @@ To make all the steps more faster, download and parallel  - https://anaconda.org
 **Install sra toolkit**
 
 ```
-conda install -c bioconda sra-tools
+conda install -c bioconda sra-tools=3.0.0
 ```
 
 **Download and prepare files**
