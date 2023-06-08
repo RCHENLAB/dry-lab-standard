@@ -95,6 +95,14 @@ env_parallel cmd ::: $(cut -f 2 < /storage/chen/data_share_folder/22_10x_hs_Ante
 
 ```
 
+
+**Run fasterqdump**
+
+```
+slurmtaco.sh -p short -t 2 -m 10G -n mhgcp-d02 -- ./sra2fasterq.sh
+
+```
+
 **Before run cell ranger analysis**
 
 Make sure the .fastq files have the proper structure name, as follows:
