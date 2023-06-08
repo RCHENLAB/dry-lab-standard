@@ -121,6 +121,8 @@ SRR18113700_S1_L001_R2_001.fastq.gz
 
 **Cell ranger count**
 
+Make sure your cellranger config is ready - https://support.10xgenomics.com/single-cell-gene-expression/software/pipelines/latest/installation
+
 Using runcellranger.sh - make sure we are using the correct reference genome!
 
 Example:
