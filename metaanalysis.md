@@ -163,3 +163,19 @@ slurmtaco.sh -p short -t 5 -m 20G -n mhgcp-d01 -- ./runcellranger.sh
 [sc-RNA-seq quality control](https://github.com/RCHENLAB/dry-lab-standard/blob/main/sc-RNA-seqqualitycontrol.md)
 
 
+After Quality control - go to Rstudio server and install Seurat
+
+**sc-RNA-seq analysis in Seurat**
+
+1) https://satijalab.org/seurat/articles/pbmc3k_tutorial.html
+2) https://satijalab.org/seurat/articles/visualization_vignette.html
+3) https://satijalab.org/seurat/articles/de_vignette.html
+4) https://satijalab.org/seurat/articles/essential_commands.html
+5) https://satijalab.org/seurat/articles/merge_vignette.html
+6) https://satijalab.org/seurat/articles/hashing_vignette.html
+
+
+
+
+
+
