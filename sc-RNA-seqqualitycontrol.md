@@ -168,6 +168,10 @@ To run cellqc in the taco server, use
 ```
 slurmtaco.sh -p short -t 5 -m 20G -n mhgcp-d03 -- cellqc -c config.yaml -- sample.txt
 
+or 
+
+slurmtaco.sh -p short -t 5 -m 20G -n mhgcp-d03 -- cellqc -d "$outdir" -t 8 -c config.yaml -- sample.txt
+
 ```  
 
 To verify the queue on taco server: 
