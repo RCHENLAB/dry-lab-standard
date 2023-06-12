@@ -105,6 +105,10 @@ If we dont have permission to copy this files, use curl or wget to download in t
 
 ```
 wget https://bcmedu-my.sharepoint.com/:f:/g/personal/u247700_bcm_edu/EqL241kj3pdNkEBdlTOh5iIBnbO5cV2ulYP2FqUEn23yeQ?e=e1gAEP
+
+or just copy from
+
+cp -R /storage/chen/data_share_folder/cellqctutorial/tmp .
 ```
 
 
