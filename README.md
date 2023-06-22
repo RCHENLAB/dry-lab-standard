@@ -209,7 +209,7 @@ If you are in the headnode, it wil show h00 in the command line.
    For example, if you wish to enter the c00 node, type in:
    ``` sruntaco.sh [c00] ```
 4. To initialize conda, type into the command line:
-   ``` source ~/.condainit
+   ``` source ~/.condainit ```
 5. To activate conda, type into the command line:
    ``` conda activate ```
 
