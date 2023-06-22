@@ -1,15 +1,23 @@
-
-
-## Workflow to analyze sc-RNA-seq data from public databases, like:
+# Meta Analysis Tutorial
+## This tutorial outlines the workflow for analysis of sc-RNA-seq data from public databases. These are the resources used in this tutorial: 
 
 * Folder with the codes /storage/chen/home/u247700/summertutorialmeta/meta
 * Geo <https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE171337>
 
-**Overall design**
+Before starting the meta analysis tutorial, in order to make all the steps more faster, download and parallel  - https://anaconda.org/conda-forge/parallel
+``` conda install -c conda-forge parallel ```
+
+Install SRA toolkit as well: 
+
+``` conda install -c bioconda sra-tools=3.0.0 ```
+
+## Summary of RNAseq- from 10x genomics
 
 scRNAseq (10x Genomics) libraries were generated from FAC-sorted WT and cRE1dup mouse embryonic cranial motor neurons spanning r3 (trigeminal motor neurons) to r7 (hypoglossal and glossopharyngeal motor neurons) marked by the motor neuron-specific Isl1MN-GFP transgenic reporter. GFP negative cells from the surrounding tissue were included for transcriptional and anatomic context. Cells were collected at E9.5 (n= 17 WT, 18 cRE1dup/+ embryos from 2 litters), E10.5 (n=12 WT, 7 cRE1dup/+ embryos from 2 litters), E11.5 (n=5 WT, 2 cRE1dup/+ embryos from 1 litter), and E12.5 (n=3 WT, 5 cRE1dup/+ embryos from 1 litter). Single cell cDNA libraries were generated using a Chromium Next GEM Single Cell 3? Library Kit v3.1. Libraries from littermate WT and cRE1dup/+ preparations were sequenced on common flow cells on a NextSeq 500 DNA sequencer using a NextSeq 500/550 High Output v2.5 kit (75 cycles) (Illumina). Raw sequence data was processed, filtered and aligned on the Cell Ranger analytic pipeline (10x Genomics) to generate FASTQ and filtered feature bc matrix files for deposit.
 
-**Collect raw data**
+# Steps: 
+
+## 1. Collect raw data
 
 To see the raw data about this dataset, go to "SRA Run Selector" which is usually located after the supplementary information.
 
@@ -30,18 +38,16 @@ ________________________________________________________________________________
 ______________________________________________________________________________________________________________________________________________
 
 
-**Env parallel**
+## 2. Download and prepare files 
+To download each file from the NCBI website, you will need to run a prefetch code. 
 
-To make all the steps more faster, download and parallel  - https://anaconda.org/conda-forge/parallel
+Into the command line, 
 
-**Install sra toolkit**
+``` vi prefetch.sh ```
 
-```
-conda install -c bioconda sra-tools=3.0.0
-```
+Into this file, copy paste the following code. 
 
-**Download and prepare files**
-To download this files: prefetch.sh code
+This code is the prefetch code, it downloads the content from the available dataset so that the data is ready when we call it later. 
 
 ```
 
@@ -58,10 +64,11 @@ env_parallel cmd ::: $(cut -f 2 < path/to/directory/fnameinfo.txt | tail -n +2)
 
 ```
 
-Structure of fnameinfo - File with the info about the SRR, as we see in the table (but we can modified as well)
-
+Next, create the fnameinfo.txt document. This outlines the samples that we will be running the CELLQC/CELLRANGER tests on. 
+Into the command line, type 
+``` vi fnameinfo.txt ```
+Once in the text document, copy paste the sample IDs and the running IDs. 
 ```
-vi fnameinfo.txt
 
 sampleid	run
 SAMN32768061	SRR23098566
@@ -69,16 +76,25 @@ SAMN32768063	SRR23098567
 
 ```
 
-To run prefetch.sh code:
+## 3. Running the prefetch code
+IMPORTANT: MAKE SURE YOU ARE NOT ON THE HEADNODE. Choose a different node: sruntaco.sh(Node)
+
+To run prefetch.sh code (Should take 3-4 hours):
 
 ```
-slurmtaco.sh -p short -t 2 -m 10G -n mhgcp-d02 -- ./prefetch.sh --max-size 420000000000
+slurmtaco.sh -p short -t 2 -m 20G -n mhgcp-d02 -- ./prefetch.sh --max-size 420000000000
 
 # -- max size: file size - set big as possible!
+# -- Instead of d02: Insert your node.
+# -- If 20G is not enough, feel free to change. 
 ```
-
+## 4. Prepare the .fastq files
 After prefetch, prepare the .fastq files with sra2fasterq.sh - fasterqdump functions
-
+Into the command line, 
+``` vi sra2fasterq.sh ```
+Copy the code below and paste into the fastq vi file. 
+Make sure to change the outdirectory (outdir) to the folder you want the results to be taken to. 
+Change the second location to the directory of the fnameinfo.txt file. 
 
 ```
 #!/usr/bin/env bash
@@ -96,14 +112,15 @@ env_parallel cmd ::: $(cut -f 2 < /storage/chen/data_share_folder/22_10x_hs_Ante
 ```
 
 
-**Run fasterqdump**
+## 5. Run fasterqdump
+Copy paste this line of code into the command line. Just like above, make sure to change the node to the one you are on. Do not use the headnode! 
 
 ```
 slurmtaco.sh -p short -t 2 -m 20G -n mhgcp-d02 -- ./sra2fasterq.sh
 
 ```
 
-**Before run cell ranger analysis**
+## 6. Preparation for cell ranger analysis
 
 Make sure the .fastq files have the proper structure name, as follows:
 
@@ -113,20 +130,35 @@ SRR23098566_2.fastq is Read 2
 SRR23098566_3.fastq is Index 1
 SRR23098566_4.fastq is Index 2
 
-Convert to:
+Convert to fastq.gz using:  
+``` gzip [fastq filename] ```
+
+Just a note: Converting a fastq file to a fastq.gz file is a way of compressing it, just like creating a zip file in windows. 
+
+Make sure your files look like this: 
+
 SRR23098566_S1_L001_R1_001.fastq.gz (and the R2 version)
 
 SRR23098566_S1_L001_R1_001.fastq.gz
 SRR23098566_S1_L001_R2_001.fastq.gz
 
-**Cell ranger count**
+
+
+## 7. Running cell ranger
 
 Make sure your cellranger config is ready - https://support.10xgenomics.com/single-cell-gene-expression/software/pipelines/latest/installation
 
-Using runcellranger.sh - make sure we are using the correct reference genome!
+It will ask you a couple of questions if this is your first time setting it up. 
 
-Example:
+Open up your runcellranger.sh file- if you do not have this file, 
 
+``` vi runcellranger.sh ```
+
+Edit runcellranger.sh - we need to make sure we are using the correct reference genome!
+
+Use this code as an example. Name the job ID with a specific name related to what we are running. 
+Make sure to use the correct sample IDs. 
+Make sure to create the correct path for the Transcriptome and the FASTQ files. 
 ```
 #!/usr/bin/bash
 
@@ -148,13 +180,13 @@ cellranger count --id=$JOBID \
 echo "All processes for all samples were done !!"
 
 ```
-
-Make sure your fastq path and transcriptome file path are correct!
+Once you are done editing your runcellranger.sh file, input the run command into the command line (change your node/ GB etc.): 
 
 
 ```
 slurmtaco.sh -p short -t 5 -m 20G -n mhgcp-d01 -- ./runcellranger.sh
 ```
+
 
 
 ✔️ Thats all! After this step, make the Quality Control pipeline! 
