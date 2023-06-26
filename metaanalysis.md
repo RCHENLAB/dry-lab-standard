@@ -131,7 +131,7 @@ SRR23098566_2.fastq
 
 SRR23098566_3.fastq
 
-Type in ``` ls-l ``` into the command line to see the file sizes. The lowest filesize corresponds to the index, the two highest ones correspond to read 1 and read 2. 
+Type in ``` ls-l ``` into the command line to see the file sizes. The lowest filesize corresponds to the index, the two highest ones correspond to read 1 and read 2. You can delete the index file. 
 
 
 Convert to fastq.gz using:  
