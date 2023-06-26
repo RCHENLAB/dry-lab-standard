@@ -80,7 +80,7 @@ SAMN32768063	SRR23098567
 ## 3. Running the prefetch code
 IMPORTANT: MAKE SURE YOU ARE NOT ON THE HEADNODE. Choose a different node: sruntaco.sh(Node)
 
-To run prefetch.sh code (Should take 3-4 hours):
+To run prefetch.sh code (Should take 40-60 min):
 
 ```
 slurmtaco.sh -p short -t 2 -m 20G -n mhgcp-d02 -- ./prefetch.sh --max-size 420000000000
