@@ -5,6 +5,7 @@
 * Geo <https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE171337>
 
 Before starting the meta analysis tutorial, in order to make all the steps more faster, download and parallel  - https://anaconda.org/conda-forge/parallel
+
 ``` conda install -c conda-forge parallel ```
 
 Install SRA toolkit as well: 
