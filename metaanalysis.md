@@ -140,8 +140,6 @@ Make sure your files look like this:
 
 SRR23098566_S1_L001_R1_001.fastq.gz (and the R2 version)
 
-SRR23098566_S1_L001_R1_001.fastq.gz
-
 SRR23098566_S1_L001_R2_001.fastq.gz
 
 
