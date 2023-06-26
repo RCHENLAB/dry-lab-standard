@@ -123,16 +123,16 @@ slurmtaco.sh -p short -t 2 -m 20G -n mhgcp-d02 -- ./sra2fasterq.sh
 
 ## 6. Preparation for cell ranger analysis
 
-Make sure the .fastq files have the proper structure name, as follows:
+The .fastq files should look like this in the output directory: 
 
+SRR23098566_1.fastq
 
-SRR23098566_1.fastq is Read 1
+SRR23098566_2.fastq
 
-SRR23098566_2.fastq is Read 2
+SRR23098566_3.fastq
 
-SRR23098566_3.fastq is Index 1
+Type in ``` ls-l ``` into the command line to see the file sizes. The lowest filesize corresponds to the index, the two highest ones correspond to read 1 and read 2. 
 
-SRR23098566_4.fastq is Index 2
 
 Convert to fastq.gz using:  
 ``` gzip [fastq filename] ```
