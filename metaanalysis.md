@@ -127,8 +127,11 @@ Make sure the .fastq files have the proper structure name, as follows:
 
 
 SRR23098566_1.fastq is Read 1
+
 SRR23098566_2.fastq is Read 2
+
 SRR23098566_3.fastq is Index 1
+
 SRR23098566_4.fastq is Index 2
 
 Convert to fastq.gz using:  
