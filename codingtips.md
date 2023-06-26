@@ -1,3 +1,27 @@
+How to create new alias, for example:
+
+To verify files by data of modification
+
+```
+ls -lt
+
+```
+ To create a alias with this command:
+
+```
+alias lt= "ls -lt"
+
+```
+
+To add in the .bashrc
+
+```
+vi ~/.bashrc 
+alias lt= "ls -lt"
+
+```
+
+
 When it comes to defining a good wrapper and decorations for Python code, there are a few key principles to keep in mind:
 
 * DRY (Don't Repeat Yourself) - Avoid duplicating code or functionality across different parts of your codebase.
