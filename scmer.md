@@ -6,18 +6,14 @@ Tips to install:
 * Install scanpy
 
 
-Required libraries:  
+```
+mamba create -y -n scmer scanpy=1.9.1 anndata=0.7.8 pandas=1.5 matplotlib=3.6 scikit-learn==0.23.2 numpy scipy seaborn
+mamba activate scmer
+mamba install -y pytorch torchvision torchaudio cudatoolkit -c pytorch
+pip install scmer
 
-pytorch
+```
 
-scikit-learn==0.23.2
 
-numpy
-
-scipy
-
-pandas
-
-seaborn
 
 
