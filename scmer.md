@@ -9,9 +9,15 @@ Tips to install:
 Required libraries:  
 
 pytorch
+
 scikit-learn==0.23.2
+
 numpy
+
 scipy
+
 pandas
+
 seaborn
+
 
