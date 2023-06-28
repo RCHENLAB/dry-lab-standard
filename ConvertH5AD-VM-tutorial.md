@@ -1,6 +1,29 @@
 # Instructions on how to prepare a .h5ad file for an atlas
 
-### 1. 
+### 1. Convert a .h5ad file to a seurat object
+
+Make sure you have the following libraries installed: 
+
+```library(Seurat)```
+
+```library(SeuratDisk)```
+
+```library(anndata)```
+
+```library(reticulate)```
+
+In order to do this, we need to submit a job to the Taco server. 
+```slurmtaco.sh -p gpu -t 5 -m 20G -n mhgcp-g00 Rscript -- /storage/chen/data_share_folder/22_10x_hs_AnteriorSegment_data/scAtacQC/run_transform_h5seurat_to_seuratobj.R  /storage/YOUR INPUT DIRECTORY [NAME YOU WANT TO GIVE TO NEW FILE  ```
+Change your node and your gig size if needed. 
+
+
+*** Just a note: if you want to ever convert a seurat object back into a .h5ad file, you can use this command: ***
+
+```Convert("D:/PATH_TO_INPUT_FILE.h5ad", dest = "h5seurat", overwrite = TRUE)```
+``` NewFile <- LoadH5Seurat("Pathtotheconvertedfile.h5seurat")```
+
+
+### 2. 
 
 
 
