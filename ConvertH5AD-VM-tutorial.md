@@ -1,29 +1,131 @@
 # Instructions on how to prepare a .h5ad file for an atlas
 
-### 1. Convert a .h5ad file to a seurat object
+### 1. Concat the .h5ad files into one file
+Make a new program called scrnascanpyconcat2h5ad.sh. Below is a copy of the code that you can use. 
 
-Make sure you have the following libraries installed: 
+```
+#!/usr/bin/env bash
+# vim: set noexpandtab tabstop=2:
 
-```library(Seurat)```
+source trapdebug
+outdir=$(mrrdir.sh)
 
-```library(SeuratDisk)```
+function cmd {
+local f=$1
+local bname=$(basename "$f" .txt.gz)
 
-```library(anndata)```
+if fileexists.sh "$f"
+then
+	slurmtaco.sh -n d01 -t 7 -m 40G -- scrnascanpyconcat2h5ad.sh -d "$outdir" -b "$bname" -t 7 -- "$f"
+fi
+}
 
-```library(reticulate)```
+source env_parallel.bash
+env_parallel cmd ::: ../metadata/HumanRetinaAtlas_AMD.txt.gz
+```
+Make sure to reference the proper text file for annotation. If you want to use the human retinal atleaas as annotation, please see this google doc for the code: 
+https://docs.google.com/document/d/1TVm_TV8gJLEZetxBLxLztpzzawwFksPxiHtHWm3eYRQ/edit?usp=sharing 
 
-In order to do this, we need to submit a job to the Taco server. 
-```slurmtaco.sh -p gpu -t 5 -m 20G -n mhgcp-g00 Rscript -- /storage/chen/data_share_folder/22_10x_hs_AnteriorSegment_data/scAtacQC/run_transform_h5seurat_to_seuratobj.R  /storage/YOUR INPUT DIRECTORY [NAME YOU WANT TO GIVE TO NEW FILE  ```
-Change your node and your gig size if needed. 
+### 2. Extract the raw counts from the concatenated .h5ad file
+
+Into the taco server, we input
+``` slurmtaco.sh -t 2 -m 20G -- scrnah5ad2clean.sh -r -d "$outdir" -b "$bname" -v -- "$f" ```
+In order to filter out zerocount genes, we input
+```scrnah5adfiltergenescellsbycounts.sh -d "$outdir" -b "$outname" -c 1 -- "$f" ```
 
 
-*** Just a note: if you want to ever convert a seurat object back into a .h5ad file, you can use this command: ***
+### 3. Split the scanpy object by column
+Make a new file called scrnah5adfiles2scviwkfl.sh
 
-```Convert("D:/PATH_TO_INPUT_FILE.h5ad", dest = "h5seurat", overwrite = TRUE)```
-``` NewFile <- LoadH5Seurat("Pathtotheconvertedfile.h5seurat")```
+You will need to install this: 
+```pip install git+https://bitbucket.org/lijinbio/jlscRNAworkflowpub```
+
+Code for the scrna scvi workflow file: 
+
+```
+#!/usr/bin/env bash
+# vim: set noexpandtab tabstop=2:
+
+source trapdebug
+indir=$(mrrdir.sh ..)
+outdir=$(mrrdir.sh)
+# slurmtaco.sh -n g01 -t 4 -m 80G -- scrnah5adfiles2scviwkfl -d "$outdir" -e scvi_gpu -t 4 -n -- "$indir"/*.h5ad
+slurmtaco.sh -n g01 -t 4 -m 80G -- scrnah5adfiles2scviwkfl -d "$outdir" -e scvi_gpu -t 4 -c config.yaml -- "$indir"/*.h5ad
+```
+
+Also make another config file, which is referenced in the previous workflow file
+Code for the config.yaml file
+```
+$ cat config.yaml 
+scrnah5adsubsetbyvaluecounts:
+  label: sampleid
+  ncell: 10
+scrnascvih5ad:
+  condaenv: **name your conda env here**
+  batchkey: sampleid
+  nlayer: 2
+  nlatent: 30
+  ntop: 10000
+  flavor: seurat
+  seed: 12345
+  epoch: null
+  gpu: null
+  normcounts: false
+scrnascanpycombinerawcountsscvi:
+  obs:
+  - _scvi_batch
+  - _scvi_labels
+  - _scvi_local_l_mean
+  - _scvi_local_l_var
+  invert: true
+scrnah5ad2normscale:
+  scale: false
+scrnah5adumapby:
+  width: 5
+  height: 5
+  label:
+  - DF.classifications
+  - accession
+  - age
+  - donor
+  - gender
+  - disease
+  - nCount_RNA
+  - nFeature_RNA
+  - pANN
+  - percent.mt
+  - leiden
+```
+
+### 4. Leiden clustering
+Code for enumerating various resolutions for leiden clustering
+
+```
+#!/usr/bin/env bash
+# vim: set noexpandtab tabstop=2:
+
+source trapdebug
+indir=$(mrrdir.sh ../scrnah5ad2clean)
+files=("$indir"/*.h5ad)
+outdir=$(mrrdir.sh)
+
+function cmd {
+local f=$1
+local bname=$(basename "$f" .h5ad)
+
+if fileexists.sh "$f"
+then
+	slurmtaco.sh -D 706695 -t 2 -m 10G -- scrnah5adscvi2leidensbyresolution -e scvi_gpu -d "$outdir" -b "${bname}_$(strjoin.sh -s _ -- "${@:2}")" $(basharr2cmdopts.sh -o -r -- "${@:2}") -- "$f"
+fi
+}
+
+source env_parallel.bash
+env_parallel cmd ::: ${files[@]} ::: 0.0{1..9} 0.{1..9} 1.{1..9} {1..2}
+```
 
 
-### 2. 
+
+
 
 
 
