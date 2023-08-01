@@ -143,6 +143,7 @@ alias sls="squeue -u $USER"
 complete -r
 
 ```
+To exit vim, [esc], :wq
 
 After configuring your BASHRC, run the following commands below into the command line to install conda. 
 
