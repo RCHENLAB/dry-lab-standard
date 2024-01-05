@@ -179,7 +179,11 @@ To verify the queue on taco server:
 ```
 squeue -u yourusername
 ```   
+If you have the alias on your PATH, just use:
 
+```
+sls
+```
 
 🔙 [Summary list of pipelines](https://github.com/RCHENLAB/dry-lab-standard/wiki)
 
