@@ -112,21 +112,12 @@ cp -R /storage/chen/data_share_folder/cellqctutorial/tmp .
 ```
 
 
-Now, we can go outside of tmp folder to run cellqc! 
+Next, `cd` to your home directory and make an output folder. `mkdir out`
 
-To run we need to files, the config.yaml and sample.txt 
+`cd out` to the output folder and make the required files, config.yaml and sample.txt.
 
-
-The config.yaml file needs to be as follows:
-
+`vim config.yaml` will create an empty file named config.yaml. Copy and paste the following into that file. Copy from this page using CTRL-C; then in vim, press `i` to enter INSERT mode and paste by right-clicking. Hit `esc` to exit INSERT mode and then type `:wq` to save and quit.
 ```
-cat config.yaml 
-```  
-
-To change the path use vim editor 
-
-```
-vi config.yaml
 dropkick:
   skip: true
   method: multiotsu
@@ -144,46 +135,19 @@ scpred:
   skip: true
   reference: /path_to_reference/scPred_trainmodel_RNA_svmRadialWeights_scpred.rds
   threshold: 0.9
-```  
-  
-
-Press i to insert the path  
-
-Press esc and  :wq to save
-
-Repeat for the sample.txt file! 
-
 ```
-vi sample.txt
-# collums must be tab separated!
-sample	cellranger
-3v31_22_0220_ONT	/storage/chenlab/Users/shared_data/HAS_april20_qc/3v31_22_0220_ONT/dataset
-```
-
-
 Example of config file: <https://github.com/RCHENLAB/dry-lab-standard/blob/main/config.yaml>
 
-To run cellqc in the taco server, use 
+Then repeat to make the `sample.txt` file. Copy and paste the below. Note that the columns must be tab-separated, and the filepath under 'cellranger' should be pointing to the folder that contains the unpacked symbolic links from earlier (`~/tmp/dataset`). However this filepath MUST be absolute, do not use `~`!
+
+FINALLY let's run cellqc. Make sure you have `cd`ed to the output folder that contains both `sample.txt` and `config.yaml`. Then, with the cellqc conda environment activated, execute the following:
 
 ```
-slurmtaco.sh -p short -t 5 -m 20G -n mhgcp-d03 -- cellqc -c config.yaml -- sample.txt
-
-or 
-
-slurmtaco.sh -p short -t 5 -m 20G -n mhgcp-d03 -- cellqc -d "$outdir" -t 8 -c config.yaml -- sample.txt
-
+slurmtaco.sh -p short -t 5 -m 20G -n mhgcp-d03 -- cellqc -d . -t 8 -c config.yaml -- sample.txt
 ```  
 
-To verify the queue on taco server: 
+To verify the queue on taco server, run `squeue -u uYOURID` or (if you have the alias in your bashrc) `sls`.
 
-```
-squeue -u yourusername
-```   
-If you have the alias on your PATH, just use:
-
-```
-sls
-```
 
 🔙 [Summary list of pipelines](https://github.com/RCHENLAB/dry-lab-standard/wiki)
 
