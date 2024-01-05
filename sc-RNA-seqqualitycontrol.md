@@ -13,7 +13,7 @@ Cellqc standardizes the qualiy control of single-cell RNA-Seq (scRNA) data to re
 Cellqc depends on a number of R and Python packages, so please install the dependencies before installing cellqc. It is encouraged to use Conda to install dependencies as much as possible. E.g.,
 
 ```
-$ conda create -y -n cellqc
+$ conda create -y -n cellqc python=3.10
 $ conda activate cellqc
 $ conda config --add channels defaults --add channels bioconda --add channels conda-forge
 $ conda install -y mamba
