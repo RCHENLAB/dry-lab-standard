@@ -169,7 +169,7 @@ Make sure to create the correct path for the Transcriptome and the FASTQ files.
 JOBID="zhangetal2022"
 SAMPLE_IDS="SRR23098566,SRR23098567"
 TRANSCRIPTOME="/storage/chen/home/u247700/cellranger/refdata-gex-mm10-2020-A"
-FASTQS="/storage/chen/home/u247700/DRG_atlas/zhangetal2022"
+FASTQS="/storage/chentemp/u247700/DRG_atlas/zhangetal2022"
 
 cellranger count --id=$JOBID \
                  --transcriptome=$TRANSCRIPTOME \
