@@ -190,6 +190,33 @@ Once you are done editing your runcellranger.sh file, input the run command into
 slurmtaco.sh -p short -t 5 -m 20G -n mhgcp-d01 -- ./runcellranger.sh
 ```
 
+Sometimes, some samples could have more than one R1 sequences, and cellranger count needs to know the minimum R1 length to truncate the samples.
+If you run cellranger and get an error like :
+
+```
+
+ERROR: We detected a mixture of different R1 lengths ([26-28]), which breaks assumptions in how UMIs are tabulated and corrected. To process these data, you will need to truncate to the shortest observed R1 length by providing 26 to the --r1-length argument if are running count/vdj, or via the r1-length parameter in each of the following tables of your multi config CSV if you are running multi: [gene-expression]
+
+```
+
+Considerer to find on fastq the minunum length of R1 and run cellranger with the followed parameter:
+
+```
+
+cellranger count --id=$JOBID \
+                   --transcriptome=$TRANSCRIPTOME \
+                   --r1-length=26 \
+                   --fastqs=$FASTQS \
+                   --sample=$SAMPLE_IDS \
+                   --localcores=16 \
+                   --localmem=64 \
+                   --expect-cells=10000
+
+```
+
+In this case, the minimum r1 length was 26
+
+
 
 
 ✔️ Thats all! After this step, make the Quality Control pipeline! 
