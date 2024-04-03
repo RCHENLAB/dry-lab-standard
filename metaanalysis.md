@@ -12,6 +12,15 @@ Install SRA toolkit as well:
 
 ``` conda install -c bioconda sra-tools=3.0.0 ```
 
+For the newest version of the listed packages, please use:
+
+```
+conda install conda-forge::parallel
+conda install bioconda::sra-tools
+
+```
+
+
 ## Summary of RNAseq- from 10x genomics
 
 scRNAseq (10x Genomics) libraries were generated from FAC-sorted WT and cRE1dup mouse embryonic cranial motor neurons spanning r3 (trigeminal motor neurons) to r7 (hypoglossal and glossopharyngeal motor neurons) marked by the motor neuron-specific Isl1MN-GFP transgenic reporter. GFP negative cells from the surrounding tissue were included for transcriptional and anatomic context. Cells were collected at E9.5 (n= 17 WT, 18 cRE1dup/+ embryos from 2 litters), E10.5 (n=12 WT, 7 cRE1dup/+ embryos from 2 litters), E11.5 (n=5 WT, 2 cRE1dup/+ embryos from 1 litter), and E12.5 (n=3 WT, 5 cRE1dup/+ embryos from 1 litter). Single cell cDNA libraries were generated using a Chromium Next GEM Single Cell 3? Library Kit v3.1. Libraries from littermate WT and cRE1dup/+ preparations were sequenced on common flow cells on a NextSeq 500 DNA sequencer using a NextSeq 500/550 High Output v2.5 kit (75 cycles) (Illumina). Raw sequence data was processed, filtered and aligned on the Cell Ranger analytic pipeline (10x Genomics) to generate FASTQ and filtered feature bc matrix files for deposit.
