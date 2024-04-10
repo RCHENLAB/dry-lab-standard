@@ -76,14 +76,14 @@ After that, don’t forget to delete the analysis.tar.gz file! rm analysis.tar.g
 
 We need to repeat this process to filtered_feature_bc_matrix.tar.gz and for raw_feature_bc_matrix.tar.gz
 ```
- cd filtered_feature_bc_matrix.tar
+ cd filtered_feature_bc_matrix
  ln -s /storage/chen/home/u247700/DRG_atlas/jageretal2022/jageretal2022/outs/filtered_feature_bc_matrix.tar.gz .
  tar -xf filtered_feature_bc_matrix.tar.gz 
 ```
 
 Verify if the follow folders are available: 1) barcodes.tsv.gz 2) features.tsv.gz 3) matrix.mtx.gz 
 
-After that, use rm analysis.tar.gz 
+After that, use rm filtered_feature_bc_matrix.tar.gz
 
 Go to the raw_feature_bc_matrix and repeat the process 
 
@@ -148,6 +148,82 @@ slurmtaco.sh -p short -t 5 -m 20G -n mhgcp-d03 -- cellqc -d . -t 8 -c config.yam
 
 To verify the queue on taco server, run `squeue -u uYOURID` or (if you have the alias in your bashrc) `sls`.
 
+
+### To create and unzip files more faster
+
+You can create a Bash script that takes a list of .tar.gz files, unzips them, and creates a directory with the same name as the tar file. Here's a simple example:
+
+```
+vi extract_and_create_dir.sh
+
+#!/bin/bash
+
+# Check if any arguments were provided
+if [ $# -eq 0 ]; then
+    echo "Usage: $0 file1.tar.gz [file2.tar.gz ...]"
+    exit 1
+fi
+
+# Loop through each provided tar.gz file
+for tar_file in "$@"; do
+    # Extract the base name without extension
+    base_name=$(basename "$tar_file" .tar.gz)
+
+    # Create a directory with the same name as the tar file
+    mkdir -p "$base_name"
+
+    # Unzip the tar file contents into the created directory
+    tar -xzf "$tar_file" -C "$base_name"
+
+    echo "Extracted $tar_file into directory $base_name"
+done
+
+
+```
+
+
+Save this script in a file, for example, extract_and_create_dir.sh. Make sure you have the necessary permissions to execute the script. You can then run the script by navigating to the directory containing the script and executing:
+
+```
+chmod +x extract_and_create_dir.sh
+./extract_and_create_dir.sh file1.tar.gz file2.tar.gz ...
+
+```
+
+You can create a Bash script that takes a list of `.tar.gz` files, unzips them, and creates a directory with the same name as the tar file. Here's a simple example:
+
+```bash
+#!/bin/bash
+
+# Check if any arguments were provided
+if [ $# -eq 0 ]; then
+    echo "Usage: $0 file1.tar.gz [file2.tar.gz ...]"
+    exit 1
+fi
+
+# Loop through each provided tar.gz file
+for tar_file in "$@"; do
+    # Extract the base name without extension
+    base_name=$(basename "$tar_file" .tar.gz)
+
+    # Create a directory with the same name as the tar file
+    mkdir -p "$base_name"
+
+    # Unzip the tar file contents into the created directory
+    tar -xzf "$tar_file" -C "$base_name"
+
+    echo "Extracted $tar_file into directory $base_name"
+done
+```
+
+Save this script in a file, for example, `extract_and_create_dir.sh`. Make sure you have the necessary permissions to execute the script. You can then run the script by navigating to the directory containing the script and executing:
+
+```bash
+chmod +x extract_and_create_dir.sh
+./extract_and_create_dir.sh file1.tar.gz file2.tar.gz ...
+```
+
+Replace `file1.tar.gz`, `file2.tar.gz`, etc., with the actual names of the tar.gz files you want to extract. The script will create a directory with the same name as each tar file and extract its contents into that directory.
 
 🔙 [Summary list of pipelines](https://github.com/RCHENLAB/dry-lab-standard/wiki)
 
