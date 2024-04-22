@@ -99,6 +99,18 @@ slurmtaco.sh -p short -t 2 -m 20G -n mhgcp-d02 -- ./prefetch.sh --max-size 42000
 # -- If 20G is not enough, feel free to change. 
 ```
 ## 4. Prepare the .fastq files
+
+### 4.1 Configure sra toolkit with vdb
+
+If you are using SRA Toolkit version 2.4 or higher, you should run the configuration tool located within the bin subdirectory of the Toolkit package. This page describes how to use version 2.11.2 of vdb-config.
+
+```
+vdb-config -i
+For more information about vdb, please visit https://github.com/ncbi/sra-tools/wiki/05.-Toolkit-Configuration
+
+```
+
+
 After prefetch, prepare the .fastq files with sra2fasterq.sh - fasterqdump functions
 Into the command line, 
 ``` vi sra2fasterq.sh ```
